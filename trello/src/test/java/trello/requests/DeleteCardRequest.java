@@ -3,12 +3,30 @@ package trello.requests;
 import trello.base.BaseTest;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import trello.tests.PostCreateCardTest;
 
 import static io.restassured.RestAssured.given;
 
 public class DeleteCardRequest {
     BaseTest baseTest = new BaseTest();
+    public static String idCard;
+
+    @Step("Criar Card para deleção")
+    public String criarCard() {
+        idCard = given()
+                .header(BaseTest.CONTENT_TYPE,BaseTest.APPLICATION_JSON)
+                .queryParam("key", BaseTest.KEY)
+                .queryParam("token",BaseTest.TOKEN)
+                .queryParam("name","Automation Test2")
+                .queryParam("desc","Card created by automation")
+                .queryParam("idList",BaseTest.IDLIST)
+                .when()
+                .post(baseTest.BASEURI + BaseTest.PATH_CARD)
+                .then()
+                .extract()
+                .path("id");
+
+        return idCard;
+    }
 
     @Step("Deletar Card")
     public Response deleteCard() {
@@ -17,7 +35,7 @@ public class DeleteCardRequest {
                 .queryParam("key", BaseTest.KEY)
                 .queryParam("token",BaseTest.TOKEN)
                 .when()
-                .post(baseTest.BASEURI + BaseTest.PATH_CARD + PostCreateCardTest.idCard);
+                .delete(baseTest.BASEURI + BaseTest.PATH_CARD + idCard);
     }
 
     @Step("Deletar Card sem autorização")
@@ -27,7 +45,7 @@ public class DeleteCardRequest {
                 .queryParam("key", "")
                 .queryParam("token",BaseTest.TOKEN)
                 .when()
-                .post(baseTest.BASEURI + BaseTest.PATH_CARD + PostCreateCardTest.idCard);
+                .delete(baseTest.BASEURI + BaseTest.PATH_CARD + idCard);
     }
 
     @Step("Deletar Card sem id do card")
@@ -37,6 +55,6 @@ public class DeleteCardRequest {
                 .queryParam("key", BaseTest.KEY)
                 .queryParam("token",BaseTest.TOKEN)
                 .when()
-                .post(baseTest.BASEURI + BaseTest.PATH_CARD);
+                .delete(baseTest.BASEURI + BaseTest.PATH_CARD);
     }
 }

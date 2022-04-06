@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.DeleteCardTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-04-06T14:52:59" hostname="NBRJ028069" time="7.712">
+  <properties/>
+  <testcase name="CT11 - Deletar um card sem id do card" classname="tests.DeleteCardTest" time="4.181"/>
+  <testcase name="CT09 - Deletar um card existente" classname="tests.DeleteCardTest" time="1.855"/>
+  <testcase name="CT10 - Deletar um card sem autorização" classname="tests.DeleteCardTest" time="1.673"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

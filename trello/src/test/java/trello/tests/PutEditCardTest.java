@@ -2,6 +2,7 @@ package trello.tests;
 
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import trello.requests.PutEditCardRequest;
@@ -10,6 +11,11 @@ import static org.hamcrest.CoreMatchers.containsString;
 
 public class PutEditCardTest {
     PutEditCardRequest consultingRequest = new PutEditCardRequest();
+
+    @BeforeEach
+    public void beforeEach() {
+        consultingRequest.criarCard();
+    }
 
     @Test
     @DisplayName("CT06 - Editar um card existente")
