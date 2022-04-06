@@ -1,0 +1,77 @@
+CT01 - Realizar autenticação com credenciais válidas
+	Dado que o usuário está na tela de login do Trello
+	E deseja se autenticar para obter o token de acesso
+	Quando o usuário digita as credenciais válidas já existentes na base de dados do Trello
+	Então o acesso deve ser concedido
+	E o usuário deve conseguir acessar a página da api-key
+	E o usuário conseguir gerar o token de autenticação
+
+CT02 - Realizar autenticação com credenciais inválidas
+	Dado que o usuário está na tela de login do Trello
+	E deseja se autenticar para obter o token de acesso
+	Quando o usuário digita as credenciais inválidas
+	Então o acesso não deve ser concedido
+	E o usuário não deve conseguir acessar a página da api-key para gerar o token
+	
+CT03 - Criar um Card
+	Dado que um usuário deseja criar um card no seu board
+	E o usuário está autenticado
+	E o usuário possui o id da lista onde deseja realizar o cadastro
+	Quando enviar a requisição de criação do card
+	Então o card deverá ser criado	
+
+CT04 - Criar um card sem autorização
+	Dado que um usuário deseja criar um card no seu board
+	E o usuário não está autenticado
+	E o usuário possui o id da lista onde deseja realizar o cadastro
+	Quando enviar a requisição de criação do card
+	Então o card não deverá ser criado
+
+CT05 - Criar um card sem id da lista
+	Dado que um usuário deseja criar um card no seu board
+	E o usuário está autenticado
+	E o usuário não possui o id da lista onde deseja realizar o cadastro
+	Quando enviar a requisição de criação do card
+	Então o card não deverá ser criado
+
+CT06 - Editar um card existente
+	Dado que um usuário deseja editar um card no seu board
+	E o usuário está autenticado
+	E o usuário possui o id do card onde deseja realizar a alteração
+	Quando enviar a requisição de edição do card
+	Então o card deverá ser editado
+
+CT07 - Editar um card sem autorização
+	Dado que um usuário deseja editar um card no seu board
+	E o usuário não está autenticado
+	E o usuário possui o id do card onde deseja realizar a alteração
+	Quando enviar a requisição de edição do card
+	Então o card não deverá ser editado
+
+CT08 - Editar um card sem id do card
+	Dado que um usuário deseja editar um card no seu board
+	E o usuário está autenticado
+	E o usuário não possui o id do card onde deseja realizar a alteração
+	Quando enviar a requisição de edição do card
+	Então o card não deverá ser editado
+
+CT09 - Deletar um card existente
+	Dado que um usuário deseja deletar um card no seu board
+	E o usuário está autenticado
+	E o usuário possui o id do card que deseja deletar
+	Quando enviar a requisição de deleção do card
+	Então o card deverá ser deletado
+
+CT10 - Deletar um card sem autorização
+	Dado que um usuário deseja deletar um card no seu board
+	E o usuário não está autenticado
+	E o usuário possui o id do card que deseja deletar
+	Quando enviar a requisição de deleção do card
+	Então o card não deverá ser deletado
+
+CT11 - Deletar um card sem id do card
+	Dado que um usuário deseja deletar um card no seu board
+	E o usuário está autenticado
+	E o usuário não possui o id do card que deseja deletar
+	Quando enviar a requisição de deleção do card
+	Então o card não deverá ser deletado
